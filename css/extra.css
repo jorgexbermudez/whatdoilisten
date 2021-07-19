@@ -1,0 +1,169 @@
+.image-cropper {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.well{
+background-color: rgba(255,255,255,0.8); // I don't know the .well color, so I used white as example
+}
+
+.display-extra{
+	font-size:2.5rem;
+	font-weight:300;
+	line-height:1.2
+}
+.display-extra2{
+	font-size:2.0rem;
+	font-weight:300;
+	line-height:1.2
+}
+.display-extra3{
+	font-size:1.66rem;
+	font-weight:100;
+	line-height:1.0
+}
+
+.display-mini{
+	font-size:1rem;
+	font-weight:300;
+	line-height:1.2
+}
+.display-terms{
+	font-size:0.3rem;
+	font-weight:200;
+	line-height:1.0
+}
+
+.form-rounded {
+border-radius: 0.2rem;
+overflow: hidden;
+}
+
+.btn:focus, .btn:active, .btn.active, .btn:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-dark2 {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-dark2:hover {
+  color: black;
+  background-color: grey;
+  border-color: transparent;
+}
+
+.btn-dark2:focus, .btn-dark2.focus {
+  box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
+}
+
+.btn-dark2.disabled, .btn-dark2:disabled {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-dark2:not(:disabled):not(.disabled):active, .btn-dark2:not(:disabled):not(.disabled).active,
+.show > .btn-dark.dropdown-toggle {
+	color: #fff;
+    background-color: #1db954;
+    border-color: transparent;
+}
+
+.btn-dark2:not(:disabled):not(.disabled):active:focus, .btn-dark2:not(:disabled):not(.disabled).active:focus,
+.show > .btn-dark.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
+}
+
+page-wrapper {
+width:auto; overflow:hidden; max-width:auto;padding:0 .5em;
+}
+
+.module-adjust-70 {
+  font-size: 70%;
+}
+
+.module-adjust-90 {
+  font-size: 90%;
+}
+
+table.responsive-table thead {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 25px;
+  line-height: 3em;
+  table-layout: fixed;
+  display: table;
+}
+
+
+/* Container for skill bars */
+.popularity-container {
+  width: auto; /* Full width */
+  background-color: transparent; /* Grey background */
+}
+
+.popularity {
+  text-align: right; /* Right-align text */
+  padding: 10px; /* Add some padding */
+  color: white; /* White text color */
+}
+
+.css {width: 80%; background-color: #2196F3;}
+
+.full-height {
+  	position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.default {cursor: default;}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.zipper.ng-animate {
+  transition:3s linear all;
+}
+.zipper.ng-enter {
+  opacity:0;
+}
+.zipper.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+@media screen and (max-width: 767px) {
+    .hidden-xs {
+        display:none;
+    }
+}
+.pointer{
+  cursor: pointer;
+}
+
+.input:focus,
+.input.has-focus {
+    border: #343a40;
+    color: black;
+}
+.with-footer {
+    margin-bottom:50px;
+}

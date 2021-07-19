@@ -1,0 +1,184 @@
+		  <div class="row h-100" ng-init="top_caller()">
+		    <div class="col-lg-4 text-center align-items-center" style="padding-left: 5%;padding-right: 0%;padding-top: 10px;">
+		    	<div class="jumbotron jumbotron-fluid bg-transparent form-rounded  position-sticky default" style="top:100px;left:0;width: 100%;text-align: center; margin-bottom: 0px;">
+				  <div class="container-fluid">
+				  <div width="100%" height="100%">
+				      <table style="margin: 0 auto;">
+				          <tr>
+				          <td class="display-extra">My Top&nbsp;</td>
+				          <td><input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" pattern="\d*" min=1 max=99 maxlength="2" ng-model="limit" class="text-center display-extra form-rounded" style="width:2.5em; height:1.5em" autofocus>
+				          <div class="display-mini">(1-99)</div>
+				          </tr>
+				      </table>
+				    </div>
+				  		<br>
+				  	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <label class="btn btn-dark2 active pointer" ng-click="type_click('artists')">
+					    <input type="radio" name="options1" id="option1-1" checked style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"><img src="/img/artist_icon.png" height=20px width=20px> Artists
+					  </label>
+					  <label class="btn btn-dark2 pointer" ng-click="type_click('tracks')">
+					    <input type="radio" name="options1" id="option1-2" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)">Tracks <img src="/img/cd_icon.png" height=20px width=20px>
+					  </label>
+					</div>
+					<div class="display-extra">of</div>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <label class="btn btn-dark2 active pointer" ng-click="time_click('long_term')">
+					    <input type="radio" name="options2" id="option2-1" autocomplete="off" checked style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"> All Time
+					  </label>
+					  <label class="btn btn-dark2 pointer" ng-click="time_click('medium_term')">
+					    <input type="radio" name="options2" id="option2-2" autocomplete="off" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"> Last 6 Months
+					  </label>
+					  <label class="btn btn-dark2 pointer" ng-click="time_click('short_term')">
+					    <input type="radio" name="options2" id="option2-2" autocomplete="off" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"> Last Month
+					  </label>
+					</div>
+					<br><br>
+					<label ng-show="top_view==1" ng-click="toggle_top()" class="btn btn-warning pointer"><img src="/img/list_icon.png" height=20px width=20px> List View </label>
+					<label ng-show="top_view==2" ng-click="toggle_top()" class="btn btn-info pointer"><img src="/img/grid_icon.png" height=20px width=20px> Grid View </label>
+				  </div>
+				  <hr class="my-4">
+				  <div ng-show="type=='tracks'||type=='artists'">
+				  <div class="display-extra">Create Playlist</div>
+				  <div ng-show="type=='tracks'">with your favourite songs</div>
+				  <div ng-show="type=='artists'">with 3 songs of your favourite artists</div>
+				  <div class="text-center">
+					  <form ng-submit="create_playlist()">
+					  	<input ng-model=playlistname class="form-rounded text-center" type="text" placeholder="Enter name" required>
+					    <input class="btn btn-dark2 active pointer" type=submit value="Create">
+					  </form>
+					  <br>
+					  <div ng-show="loading" class="spinner-border text-success" role="status">
+						  <span class="sr-only">Loading...</span>
+					  </div>
+					  <div ng-show="success_alert" class="alert alert-success" role="alert">
+						  <img src="/img/success_icon.png" height=20px width=20px>Playlist: {{playlistname}} created successfully
+					  </div>
+					  <div ng-show="fail_alert" class="alert alert-danger" role="alert">
+						  <img src="/img/fail_icon.png" height=20px width=20px> An error ocurred while creating your playlist
+					  </div>
+					  <!--  <div>
+					  </div>-->
+				  </div>
+				  </div>
+				  </div>
+				</div>
+		    
+		    
+		    <div class="col-lg-8 text-center d-flex align-items-center justify-content-center default" style="padding-top: 0px;">
+		    	<br>
+				<div ng-if="limit>0 && top_view==1" class="row justify-content-center align-items-top text-align-center">
+				  
+				  <!-- First 50 results -->
+				  <div class="col-xs-6  "  ng-repeat="item in topitems | limitTo:limit">
+				  	<div ng-click="open_spotify(item.external_urls.spotify)" ng-show="type=='artists'" class="card border-light rounded pointer" style="width: 9.5rem; height: 9.5rem; background-image:url({{item.images[2].url}});background-size: contain;background-repeat: no-repeat;">
+					  <div class="card-body h-100 justify-content-center align-items-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3))">
+					  	<br>
+					  	<h5 class="card-title text-center text-white">{{$index+1}}</h5>
+					  	<p class="card-title text-center text-white module-adjust-90">{{item.name}}</p>
+					  </div>
+					</div>
+					<div ng-show="type=='tracks'">
+					<div ng-click="open_spotify(item.external_urls.spotify)" class="card border-light rounded" style="width: 9.5rem; height: 9.5rem; background-image:url({{item.album.images[1].url}});background-size: contain;background-repeat: no-repeat;">
+					  <div class="card-body h-100 justify-content-center align-items-center">
+					  </div>		  
+					</div>
+					<h5 class="card-title text-center text-black">{{$index+1}}</h5>
+					<p  style="width: 9.5rem;" class="card-title text-center text-black module-adjust-80">{{item.name}}</p>
+					</div>
+				 </div>
+				 
+				 <!-- Results 51-99 -->
+				  <div class="col-xs-6" ng-show="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
+				  	<div ng-click="open_spotify(item.external_urls.spotify)" ng-show="type=='artists'" class="card border-light rounded pointer" style="width: 9.5rem; height: 9.5rem; background-image:url({{item.images[2].url}});background-size: contain;background-repeat: no-repeat;">
+					  <div class="card-body h-100 justify-content-center align-items-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3))">
+					  	<br>
+					  	<h5 class="card-title text-center text-white">{{$index+51}}</h5>
+					  	<p  class="card-title text-center text-white module-adjust-90">{{item.name}}</p>
+					  </div>
+					</div>
+					<div ng-show="type=='tracks'"> 
+					<div ng-click="open_spotify(item.external_urls.spotify)" class="card border-light rounded" style="width: 9.5rem; height: 9.5rem; background-image:url({{item.album.images[1].url}});background-size: contain;background-repeat: no-repeat;">
+					  <div class="card-body h-100 justify-content-center text-black align-items-center">
+					  </div>  
+					</div>
+					<h5 class="card-title text-center">{{$index+51}}</h5>
+					<p  style="width: 9.5rem;" class="card-title text-center text-black module-adjust-90">{{item.name}}</p>
+				 </div>
+				 </div>
+				</div>
+				
+				<div ng-if="limit>0 && top_view==2 && type=='artists'" class="row w-75 justify-content-center">
+					<table width=80% class="table table-striped table-sm">
+					<thead class="thead-dark">
+	    				<tr>
+	    					<th>#</th>
+							<th colspan=2 width=60%><img src="/img/artist_icon.png" height=20px width=20px></th>
+							<th width=25%><img src="/img/popularity_icon.png" height=20px width=20px></th>
+						</tr>
+					</thead>
+					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
+						<td width=5% class="text-center align-middle"><strong>{{$index+1}}</strong></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[2].url}}" height=40px width=40px></td>
+						<td class="text-left align-middle"><div>{{item.name}}</div><div><small>Followers: {{item.followers.total|followersfilter}}</small></div></td>
+						<td width=20% class="text-right align-middle"><div class="progress">
+  							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</div></td>
+					</tr>
+					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
+						<td width=5% class="text-center align-middle"><strong>{{$index+51}}</strong></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[2].url}}" height=40px width=40px></td>
+						<td class="text-left align-middle"><div>{{item.name}}</div><div><small>Followers: {{item.followers.total|followersfilter}}</small></div></td>
+						<td width=20% class="text-right align-middle"><div class="progress">
+  							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</div></td>
+					</tr>
+				</table>
+				 </div>
+				 <br>
+				 <div ng-if="limit>0 && top_view==2 && type=='tracks'" class="row w-75 justify-content-center">
+				 <br>
+					<table width=80% class="table table-striped table-sm">
+					<thead class="thead-dark">
+	    				<tr>
+	    					<th>#</th>
+							<th colspan=2 width=60%><img src="/img/cd_icon.png" height=20px width=20px></th>
+							<th width=25%><img src="/img/popularity_icon.png" height=20px width=20px></th>
+						</tr>
+					</thead>
+					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
+						<td width=5% class="text-center align-middle"><strong>{{$index+1}}</strong></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[2].url}}" height=40px width=40px></td>
+						<td width=55% class="text-left align-middle"><div>{{item.name}}</div><div><small>{{item.artists[0].name}} | {{item.duration_ms|millSecondsToTimeString2}}</small></div></td>
+						<td width=20% class="text-right align-middle"><div class="progress">
+  							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</div></td>
+					</tr>
+					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
+						<td width=5% class="text-center align-middle"><strong>{{$index+51}}</strong></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[2].url}}" height=40px width=40px></td>
+						<td width=55% class="text-left align-middle"><div>{{item.name}}</div><div><small>{{item.artists[0].name}} | {{item.duration_ms|millSecondsToTimeString2}}</small></div></td>
+						<td width=20% class="text-right align-middle"><div class="progress">
+  							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</div></td>
+					</tr>
+				</table>
+				 </div>
+				
+	 		</div>
+		</div>

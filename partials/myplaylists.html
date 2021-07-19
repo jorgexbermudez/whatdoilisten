@@ -1,0 +1,77 @@
+<div class="row h-100 justify-content-center default">
+		   <div class="col-md-4 text-center" style="padding-left: 0%;padding-right: 0%;padding-top: 10px;">
+		    	<div class="jumbotron jumbotron-fluid bg-transparent default form-rounded  position-sticky" style="top:100px;left:0;width: 100%;text-align: center;margin-bottom: 0px;">
+				  <div class="container-fluid">
+				  	<!-- <div class="display-4">Playlist Info </div><br> -->
+					<img class="pointer" ng-click="open_spotify(playlist_data.external_urls.spotify)" style="width: 8rem; height: 8rem;" src="{{playlist_data.images[0].url}}">
+					<div>
+						<h1 class="display-extra"> {{playlist_data.name}}</h1>
+						<p><small>{{playlist_data.description}}</small></p>
+						<p><strong>{{playlist_data.tracks.total}} songs</strong></p>
+						<div><small>Average Song Popularity</small></div>
+						<div ng-if="loading_playlist" class="text-center" style="padding-left: 33.333%;"><span class="progress align-middle" style="width:50%">
+  							<span ng-show="avg>=75 && loading_playlist" class="progress-bar bg-succes align-middles" role="progressbar" ng-style="{width : ( {{avg}}+ '%' ) }" aria-valuenow={{avg}} aria-valuemin="0" aria-valuemax="100">{{avg}}</span>
+						  	<span ng-show="avg<75 && avg>=50 && loading_playlist" class="progress-bar bg-info align-middle" role="progressbar" ng-style="{width : ( {{avg}}+ '%' ) }" aria-valuenow={{avg}} aria-valuemin="0" aria-valuemax="100">{{avg}}</span>
+						  	<span ng-show="avg<50 && avg>=25 && loading_playlist" class="progress-bar bg-warning text-dark align-middle" role="progressbar" ng-style="{width : ( {{avg}}+ '%' ) }" aria-valuenow={{avg}} aria-valuemin="0" aria-valuemax="100">{{avg}}</span>
+						  	<span ng-show="avg<25 && loading_playlist" class="progress-bar bg-danger text-dark align-middle" role="progressbar" ng-style="{width : ( {{avg}}+ '%' ) }" aria-valuenow={{avg}} aria-valuemin="0" aria-valuemax="100">{{avg}}</span>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</span></div>
+						<div ng-hide="loading_playlist" class="spinner-border text-info" role="status">
+						  			<span class="sr-only">Loading...</span>
+					  	</div>	
+					  	<br>			
+						<p><small><strong>Playlist Duration: </strong>{{play_length|millSecondsToTimeString}}</small></p>
+						<!--<input ng-show="playlist_view==1" ng-click="toggle_playlist()" class="btn btn-success" type="button" value="View Details">
+						<input ng-show="playlist_view==2" ng-click="toggle_playlist()" class="btn btn-info" type="button" value="View All Playlists">-->
+						
+						<label ng-show="playlist_view==1" ng-click="toggle_playlist()" class="btn btn-warning pointer"><img src="/img/list_icon.png" height=20px width=20px> Playlist Details </label>
+					    <label ng-show="playlist_view==2" ng-click="toggle_playlist()" class="btn btn-info pointer"><img src="/img/grid_icon.png" height=20px width=20px> All Playlists </label>
+						
+					</div>
+				  </div>
+				 </div>
+			</div>
+		    
+		    <div ng-show="playlist_view==1" class="col-md-7 text-center justify-content-center default">
+				<div class="row justify-content-center text-align-center" ng-repeat="playlist in playlists">
+				  <!-- First 50 results -->
+				  <div class="col-xs-12"  ng-repeat="p in playlist">
+				  	<div ng-click="playlist_details(p.href);change_pl_view()" class="card border-light rounded pointer" style="width: 9rem; height: 9rem; background-image:url({{p.images[0].url}});background-size: contain;background-repeat:repeat;">
+					  <div class="card-body h-100 justify-content-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7))">
+					  	<table>
+					  		<tr><p class="text-white display-mini" style="height: 2.5rem;">{{p.name}}</p></tr>
+					  		<tr><p class="text-white" style="height: 2rem;"><small>By: {{p.owner.display_name}}</small></p></tr>
+					  	</table>
+					  	
+					  </div>
+					</div>
+				  </div>
+				</div>
+		    </div>
+		    
+		    <div ng-show="playlist_view==2" class="col-lg-7 text-center justify-content-center">
+		    <!-- <h1 class="display-4">{{playlist_data.name}}</h1> -->
+				<table width=50% class="table table-striped table-sm">
+					<thead class="thead-dark">
+	    				<tr>
+							<th colspan=2><img src="/img/cd_icon.png" height=20px width=20px></th>
+							<th><img src="/img/artist_icon.png" height=20px width=20px></th>
+							<th class="align-middle" style="font-size: 13px;"><img src="/img/popularity_icon.png" height=20px width=20px></th>
+						</tr>
+					</thead>
+					<tr class="pointer" ng-click="open_spotify(song.track.external_urls.spotify)" ng-repeat="song in playlist_songs">
+						<td width=3% class="text-left align-middle"><img alt="alt1" class="align-middle" src="{{song.track.album.images[2].url}}" height=40px width=40px></td>
+						<td width=25% class="text-left align-middle"><div>{{song.track.name}}</div><div><small>Duration: {{song.track.duration_ms|millSecondsToTimeString2}}</small></div></td>
+						<td width=25% class="text-center align-middle">{{song.track.album.artists[0].name}}</td>
+						<td width=15% class="text-center align-middle"><div class="progress">
+  							<div ng-show="song.track.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
+						  	<div ng-show="song.track.popularity<75 && song.track.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
+						  	<div ng-show="song.track.popularity<50 && song.track.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
+						  	<div ng-show="song.track.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
+						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						</div></td>
+					</tr>
+				</table>
+		    </div>
+
+</div>
