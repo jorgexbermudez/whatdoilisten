@@ -14,10 +14,10 @@
 				  		<br>
 				  	<div class="btn-group btn-group-toggle" data-toggle="buttons">
 					  <label class="btn btn-dark2 active pointer" ng-click="type_click('artists')">
-					    <input type="radio" name="options1" id="option1-1" checked style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"><img src="/img/artist_icon.png" height=20px width=20px> Artists
+					    <input type="radio" name="options1" id="option1-1" checked style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)"><img src="img/artist_icon.png" height=20px width=20px> Artists
 					  </label>
 					  <label class="btn btn-dark2 pointer" ng-click="type_click('tracks')">
-					    <input type="radio" name="options1" id="option1-2" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)">Tracks <img src="/img/cd_icon.png" height=20px width=20px>
+					    <input type="radio" name="options1" id="option1-2" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), transparent)">Tracks <img src="img/cd_icon.png" height=20px width=20px>
 					  </label>
 					</div>
 					<div class="display-extra">of</div>
@@ -33,8 +33,8 @@
 					  </label>
 					</div>
 					<br><br>
-					<label ng-show="top_view==1" ng-click="toggle_top()" class="btn btn-warning pointer"><img src="/img/list_icon.png" height=20px width=20px> List View </label>
-					<label ng-show="top_view==2" ng-click="toggle_top()" class="btn btn-info pointer"><img src="/img/grid_icon.png" height=20px width=20px> Grid View </label>
+					<label ng-show="top_view==1" ng-click="toggle_top()" class="btn btn-warning pointer"><img src="img/list_icon.png" height=20px width=20px> List View </label>
+					<label ng-show="top_view==2" ng-click="toggle_top()" class="btn btn-info pointer"><img src="img/grid_icon.png" height=20px width=20px> Grid View </label>
 				  </div>
 				  <hr class="my-4">
 				  <div ng-show="type=='tracks'||type=='artists'">
@@ -51,10 +51,10 @@
 						  <span class="sr-only">Loading...</span>
 					  </div>
 					  <div ng-show="success_alert" class="alert alert-success" role="alert">
-						  <img src="/img/success_icon.png" height=20px width=20px>Playlist: {{playlistname}} created successfully
+						  <img src="img/success_icon.png" height=20px width=20px>Playlist: {{playlistname}} created successfully
 					  </div>
 					  <div ng-show="fail_alert" class="alert alert-danger" role="alert">
-						  <img src="/img/fail_icon.png" height=20px width=20px> An error ocurred while creating your playlist
+						  <img src="img/fail_icon.png" height=20px width=20px> An error ocurred while creating your playlist
 					  </div>
 					  <!--  <div>
 					  </div>-->
@@ -112,8 +112,8 @@
 					<thead class="thead-dark">
 	    				<tr>
 	    					<th>#</th>
-							<th colspan=2 width=60%><img src="/img/artist_icon.png" height=20px width=20px></th>
-							<th width=25%><img src="/img/popularity_icon.png" height=20px width=20px></th>
+							<th colspan=2 width=60%><img src="img/artist_icon.png" height=20px width=20px></th>
+							<th width=25%><img src="img/popularity_icon.png" height=20px width=20px></th>
 						</tr>
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
@@ -125,7 +125,7 @@
 						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
-						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						  	<img src="img/popularity_icon.png" height=15px width=15px>
 						</div></td>
 					</tr>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
@@ -137,7 +137,7 @@
 						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
-						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						  	<img src="img/popularity_icon.png" height=15px width=15px>
 						</div></td>
 					</tr>
 				</table>
@@ -149,8 +149,8 @@
 					<thead class="thead-dark">
 	    				<tr>
 	    					<th>#</th>
-							<th colspan=2 width=60%><img src="/img/cd_icon.png" height=20px width=20px></th>
-							<th width=25%><img src="/img/popularity_icon.png" height=20px width=20px></th>
+							<th colspan=2 width=60%><img src="img/cd_icon.png" height=20px width=20px></th>
+							<th width=25%><img src="img/popularity_icon.png" height=20px width=20px></th>
 						</tr>
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
@@ -162,7 +162,7 @@
 						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
-						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						  	<img src="img/popularity_icon.png" height=15px width=15px>
 						</div></td>
 					</tr>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
@@ -174,7 +174,7 @@
 						  	<div ng-show="item.popularity<75 && item.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<50 && item.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
 						  	<div ng-show="item.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
-						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						  	<img src="img/popularity_icon.png" height=15px width=15px>
 						</div></td>
 					</tr>
 				</table>
