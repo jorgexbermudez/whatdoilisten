@@ -24,8 +24,8 @@
 						<!--<input ng-show="playlist_view==1" ng-click="toggle_playlist()" class="btn btn-success" type="button" value="View Details">
 						<input ng-show="playlist_view==2" ng-click="toggle_playlist()" class="btn btn-info" type="button" value="View All Playlists">-->
 						
-						<label ng-show="playlist_view==1" ng-click="toggle_playlist()" class="btn btn-warning pointer"><img src="/img/list_icon.png" height=20px width=20px> Playlist Details </label>
-					    <label ng-show="playlist_view==2" ng-click="toggle_playlist()" class="btn btn-info pointer"><img src="/img/grid_icon.png" height=20px width=20px> All Playlists </label>
+						<label ng-show="playlist_view==1" ng-click="toggle_playlist()" class="btn btn-warning pointer"><img src="img/list_icon.png" height=20px width=20px> Playlist Details </label>
+					    <label ng-show="playlist_view==2" ng-click="toggle_playlist()" class="btn btn-info pointer"><img src="img/grid_icon.png" height=20px width=20px> All Playlists </label>
 						
 					</div>
 				  </div>
@@ -56,7 +56,7 @@
 	    				<tr>
 							<th colspan=2><img src="/img/cd_icon.png" height=20px width=20px></th>
 							<th><img src="/img/artist_icon.png" height=20px width=20px></th>
-							<th class="align-middle" style="font-size: 13px;"><img src="/img/popularity_icon.png" height=20px width=20px></th>
+							<th class="align-middle" style="font-size: 13px;"><img src="img/popularity_icon.png" height=20px width=20px></th>
 						</tr>
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(song.track.external_urls.spotify)" ng-repeat="song in playlist_songs">
@@ -68,7 +68,7 @@
 						  	<div ng-show="song.track.popularity<75 && song.track.popularity>=50" class="progress-bar bg-info" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
 						  	<div ng-show="song.track.popularity<50 && song.track.popularity>=25" class="progress-bar bg-warning text-dark" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
 						  	<div ng-show="song.track.popularity<25" class="progress-bar bg-danger text-dark" role="progressbar" ng-style="{width : ( {{song.track.popularity}}+ '%' ) }" aria-valuenow={{song.track.popularity}} aria-valuemin="0" aria-valuemax="100">{{song.track.popularity}}</div>
-						  	<img src="/img/popularity_icon.png" height=15px width=15px>
+						  	<img src="img/popularity_icon.png" height=15px width=15px>
 						</div></td>
 					</tr>
 				</table>
