@@ -1,6 +1,6 @@
 app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams, $location,$sce) {
 	
-	//alert("Executing controller")
+	alert("Executing controller")
 	$scope.playlists=[];
 	$scope.current_playlist=null;
 	$scope.first_call=false;
