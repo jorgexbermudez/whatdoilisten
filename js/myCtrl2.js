@@ -1,5 +1,5 @@
 app.controller("myCtrl2", function($scope, $http, $cookies,$timeout,$routeParams, $location,$sce) {
-	lert("Inicializando CTRL2")
+	alert("Inicializando CTRL2")
     //Now Playing function
 	  $scope.now_playing = function () {
         $http({
