@@ -706,13 +706,13 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 
 //Now Playing function
 	  $scope.now_playing = function () {
-		  alert("Searching for what you are listening to...")
 		  $http({
 			method : "GET",
 			url : "https://api.spotify.com/v1/me/player/currently-playing",
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
+			  	alert(response.data.item.artists.name)
 				var npsong = response.data.item.name;
 			  	var npsong2 = response.data.item.name;
 				var npartist = response.data.item.artists.name;
