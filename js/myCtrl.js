@@ -712,12 +712,13 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-			  	alert("7")
+			  	alert("8")
 				var npsong = response.data.item.name;
 				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
 				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
 				$scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN";
+				$scope.$songurinp = "spotify:track:"+npuri;
 
 				$http({
 				    method : "POST",
