@@ -714,9 +714,10 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			}
 			}).then(function mySuccess(response) {
 				var npsong = response.data.item.name;
-				var npartist = response.data.item.name;
+			  	var npsong2 = response.data.item.name;
+				var npartist = response.data.item.artists.name;
 				var npuri = response.data.item.uri;
-				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
+				alert("Está sonando: "+npsong+" de "+npsong2+" con link: "+npuri);
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
