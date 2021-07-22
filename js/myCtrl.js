@@ -712,7 +712,7 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-			  	alert("3"+JSON.stringify(response.data.item))
+			  	alert("4")
 				var npsong = response.data.item.name;
 				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
