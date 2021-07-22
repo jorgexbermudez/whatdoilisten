@@ -717,6 +717,8 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
 				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
+				$scope.playlistid = "1dxJXfnfAV46mmLrMEypIN";
+				$scope.$scope.songuris = npuri;
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
