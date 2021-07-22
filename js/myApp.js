@@ -58,6 +58,9 @@ app.config(function($routeProvider) {
 		    }).when("/myplaylists", {
 		        templateUrl : "partials/myplaylists.html",
 		        controller: "myCtrl"
+		    }).when("/now_playing", {
+		        templateUrl : "partials/nowplaying.html",
+		        controller: "myCtrl"
 		    }).when("/contact", {
 		        templateUrl : "partials/contact.html",
 		    }).when("/FAQ", {
