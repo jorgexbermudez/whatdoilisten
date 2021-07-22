@@ -713,7 +713,10 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-				alert("Se obtuvo respuesta "+JSON.stringify(response));
+				var npsong = response.data.item.name;
+				var npartist = response.data.item.artists.name;
+				var npuri = response.data.item.uri;
+				alert("Está sonando: "+npsong+" de "+ npartist +" con link: "+npuri);
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
