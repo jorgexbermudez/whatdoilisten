@@ -54,13 +54,12 @@ app.config(function($routeProvider) {
 		    $routeProvider
 		    .when("/mytop", {
 		        templateUrl : "partials/mytop.html",
-		        controller: "myCtrl"
+		        //controller: "myCtrl"
 		    }).when("/myplaylists", {
 		        templateUrl : "partials/myplaylists.html",
-		        controller: "myCtrl"
+		        //controller: "myCtrl"
 		    }).when("/nowplaying", {
 		        templateUrl : "partials/nowplaying.html",
-		        controller: "myCtrl"
 		    }).when("/contact", {
 		        templateUrl : "partials/contact.html",
 		    }).when("/FAQ", {
