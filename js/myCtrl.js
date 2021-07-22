@@ -711,13 +711,12 @@ $scope.now_playing = function () {
 	  headers:{"Authorization": "Bearer "+$scope.authorization
 	  }
 	  }).then(function mySuccess(response) {
-		  var npsong = response.data.item.name;
-		  var npartist = response.data.item.artists[0].name;
+		  $scope.npsong = response.data.item.name;
+		  $scope.npartist = response.data.item.artists[0].name;
 		  $scope.npuri = []
 		  $scope.npuri [0] = response.data.item.uri;
 		  $scope.npurishort = response.data.item.uri.split(":")[2];
 		  alert($scope.npurishort);
-		  $scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN";
 		  $scope.playersrc = "https://open.spotify.com/embed/track/"+$scope.npurishort;
 
 		  $http({
