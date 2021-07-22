@@ -6,6 +6,9 @@
               <table style="margin: 0 auto;">
                   <tr>
                   <td class="display-extra">Playing&nbsp;</td>
+                  $(window).load(function() {
+                    alert("hi 2");
+                    });
                   <td><iframe id="player" ng-src="{{playersrc}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
                 </tr>
               </table>
