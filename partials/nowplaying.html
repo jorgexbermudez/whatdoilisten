@@ -24,4 +24,7 @@
         }
     };
     window.onload = loadDeferredIframe;
+    angular.element(window).bind('load', function() {
+                alert('1');
+            });
 </script>
