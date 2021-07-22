@@ -118,7 +118,7 @@
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
 						<td width=5% class="text-center align-middle"><strong>{{$index+1}}</strong></td>
-						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[2].url}}" height=40px width=40px></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[0].url}}" height=40px width=40px></td>
 						<td class="text-left align-middle"><div>{{item.name}}</div><div><small>Followers: {{item.followers.total|followersfilter}}</small></div></td>
 						<td width=20% class="text-right align-middle"><div class="progress">
   							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
@@ -130,7 +130,7 @@
 					</tr>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
 						<td width=5% class="text-center align-middle"><strong>{{$index+51}}</strong></td>
-						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[2].url}}" height=40px width=40px></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.images[0].url}}" height=40px width=40px></td>
 						<td class="text-left align-middle"><div>{{item.name}}</div><div><small>Followers: {{item.followers.total|followersfilter}}</small></div></td>
 						<td width=20% class="text-right align-middle"><div class="progress">
   							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
@@ -155,7 +155,7 @@
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-repeat="item in topitems | limitTo:limit">
 						<td width=5% class="text-center align-middle"><strong>{{$index+1}}</strong></td>
-						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[2].url}}" height=40px width=40px></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[0].url}}" height=40px width=40px></td>
 						<td width=55% class="text-left align-middle"><div>{{item.name}}</div><div><small>{{item.artists[0].name}} | {{item.duration_ms|millSecondsToTimeString2}}</small></div></td>
 						<td width=20% class="text-right align-middle"><div class="progress">
   							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>
@@ -167,7 +167,7 @@
 					</tr>
 					<tr class="pointer" ng-click="open_spotify(item.external_urls.spotify)" ng-if="limit>50" ng-repeat="item in topitems2 | limitTo:limit-50">
 						<td width=5% class="text-center align-middle"><strong>{{$index+51}}</strong></td>
-						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[2].url}}" height=40px width=40px></td>
+						<td width=5% class="text-left align-middle"><img alt="alt1" src="{{item.album.images[0].url}}" height=40px width=40px></td>
 						<td width=55% class="text-left align-middle"><div>{{item.name}}</div><div><small>{{item.artists[0].name}} | {{item.duration_ms|millSecondsToTimeString2}}</small></div></td>
 						<td width=20% class="text-right align-middle"><div class="progress">
   							<div ng-show="item.popularity>=75" class="progress-bar bg-success" role="progressbar" ng-style="{width : ( {{item.popularity}}+ '%' ) }" aria-valuenow={{item.popularity}} aria-valuemin="0" aria-valuemax="100">{{item.popularity}}</div>

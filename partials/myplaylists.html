@@ -60,7 +60,7 @@
 						</tr>
 					</thead>
 					<tr class="pointer" ng-click="open_spotify(song.track.external_urls.spotify)" ng-repeat="song in playlist_songs">
-						<td width=3% class="text-left align-middle"><img alt="alt1" class="align-middle" src="{{song.track.album.images[2].url}}" height=40px width=40px></td>
+						<td width=3% class="text-left align-middle"><img alt="alt1" class="align-middle" src="{{song.track.album.images[0].url}}" height=40px width=40px></td>
 						<td width=25% class="text-left align-middle"><div>{{song.track.name}}</div><div><small>Duration: {{song.track.duration_ms|millSecondsToTimeString2}}</small></div></td>
 						<td width=25% class="text-center align-middle">{{song.track.album.artists[0].name}}</td>
 						<td width=15% class="text-center align-middle"><div class="progress">
