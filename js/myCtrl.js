@@ -717,6 +717,7 @@ $scope.now_playing = function () {
 		  $scope.npuri = []
 		  $scope.npuri [0] = response.data.item.uri;
 		  $scope.npurishort = response.data.item.uri.split(":")[2];
+		  $scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN"
 		  alert($scope.npurishort);
 		  $scope.playersrc = "https://open.spotify.com/embed/track/"+$scope.npurishort;
 
