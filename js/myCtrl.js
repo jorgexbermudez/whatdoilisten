@@ -712,12 +712,11 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-			  	alert("2"+JSON.stringify(response.data.item))
+			  	alert("3"+JSON.stringify(response.data.item))
 				var npsong = response.data.item.name;
-			  	var npsong2 = response.data.item.name;
-				var npartist = response.data.item.artists.name;
+				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
-				alert("Está sonando: "+npsong+" de "+npsong2+" con link: "+npuri);
+				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
