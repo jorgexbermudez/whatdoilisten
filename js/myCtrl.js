@@ -714,7 +714,7 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			}
 			}).then(function mySuccess(response) {
 				var npsong = response.data.item.name;
-				var npartist = response.data.item;
+				var npartist = response.data.item.name;
 				var npuri = response.data.item.uri;
 				alert("Está sonando: "+npsong+" de "+ npartist +" con link: "+npuri);
 			}, function myError(response) {
