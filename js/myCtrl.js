@@ -712,13 +712,14 @@ $scope.now_playing = function () {
 	  }).then(function mySuccess(response) {
 		  var npsong = response.data.item.name;
 		  var npartist = response.data.item.artists[0].name;
-		  var npuri = []
-		  npuri [0] = response.data.item.uri;
+		  $scope.npuri = []
+		  $scope.npuri [0] = response.data.item.uri;
+		  $scope.npurishort = response.data.item.uri.split(":")[2];
 		  $scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN";
 
 		  $http({
 			  method : "POST",
-			  data :{uris:npuri},
+			  data :{uris:$scope.npuri},
 			  url : "https://api.spotify.com/v1/playlists/"+$scope.playlistidnp+"/tracks",
 			  headers:{"Authorization": "Bearer "+$scope.authorization, "Content-Type":"application/json"}
 			}).then(function mySuccess(response) {
