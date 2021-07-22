@@ -712,14 +712,28 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-			  	alert("5")
+			  	alert("6")
 				var npsong = response.data.item.name;
 				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
 				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
-				$scope.playlistid = "1dxJXfnfAV46mmLrMEypIN";
-				$scope.$scope.songuris = npuri;
-				$scope.add_songs();
+				$scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN";
+				$scope.$songurinp = "spotify:track:"+npuri;
+
+				$http({
+				    method : "POST",
+				    data :{uris:$scope.songurinp},
+				    url : "https://api.spotify.com/v1/playlists/"+$scope.playlistidnp+"/tracks",
+				    headers:{"Authorization": "Bearer "+$scope.authorization, "Content-Type":"application/json"}
+			  	}).then(function mySuccess(response) {
+				    	alert ("Songs successfully added")
+			  			$scope.loading=false;
+				    	$scope.display_success();
+				  }, function myError(response) {
+					  $scope.loading=false;
+					  $scope.display_fail();
+					  	alert ("2 "+JSON.stringify(response))
+				  });
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
