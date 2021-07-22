@@ -703,4 +703,11 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 //--------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------		
 
+
+//Now Playing function
+	  $scope.now_playing = function () {
+		  alert("Searching for what you are listening to...")
+	  }
+
+
 }); 
