@@ -1,6 +1,7 @@
 app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams, $location,$sce) {
 	
 	//alert("Executing controller")
+	$scope.playersrc = "https://open.spotify.com/embed/track/7aSH6TRRmt2mDIdEY7fIf5";
 	$scope.playlists=[];
 	$scope.current_playlist=null;
 	$scope.first_call=false;

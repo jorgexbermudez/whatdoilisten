@@ -15,15 +15,6 @@
 </div>
 <script>
     var counter = 1;
-
-    function loadDeferredIframe() {
-        alert("Reloading");
-        if (counter < 2){
-            counter=2;
-            document.getElementById('player').contentWindow.location.reload(true);    
-        }
-    };
-    window.onload = loadDeferredIframe;
     angular.element(window).bind('load', function() {
                 alert('1');
             });
