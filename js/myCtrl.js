@@ -1,6 +1,6 @@
 app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams, $location,$sce) {
 	
-	alert("Executing controller")
+	//alert("Executing controller")
 	$scope.playlists=[];
 	$scope.current_playlist=null;
 	$scope.first_call=false;
@@ -710,12 +710,10 @@ $scope.now_playing = function () {
 	  headers:{"Authorization": "Bearer "+$scope.authorization
 	  }
 	  }).then(function mySuccess(response) {
-			alert("10")
 		  var npsong = response.data.item.name;
 		  var npartist = response.data.item.artists[0].name;
 		  var npuri = []
 		  npuri [0] = response.data.item.uri;
-		  alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
 		  $scope.playlistidnp = "1dxJXfnfAV46mmLrMEypIN";
 
 		  $http({
