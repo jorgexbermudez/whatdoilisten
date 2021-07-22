@@ -455,7 +455,7 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 	  
 //Add songs to playlist
 	  $scope.add_songs = function () {
-		  //alert ("Adding songs to "+$scope.playlistid);
+		  alert ("Adding songs to "+$scope.playlistid);
 		  //alert ("Song URIs: "+$scope.songuri1)
 		  //alert("https://api.spotify.com/v1/playlists/"+$scope.playlistid+"/tracks?uris="+$scope.songuri1)
 		  if($scope.type=="tracks"){
@@ -712,13 +712,14 @@ app.controller("myCtrl", function($scope, $http, $cookies,$timeout,$routeParams,
 			headers:{"Authorization": "Bearer "+$scope.authorization
 			}
 			}).then(function mySuccess(response) {
-			  	alert("4")
+			  	alert("5")
 				var npsong = response.data.item.name;
 				var npartist = response.data.item.artists[0].name;
 				var npuri = response.data.item.uri;
 				alert("Está sonando: "+npsong+" de "+npartist+" con link: "+npuri);
 				$scope.playlistid = "1dxJXfnfAV46mmLrMEypIN";
 				$scope.$scope.songuris = npuri;
+				$scope.add_songs();
 			}, function myError(response) {
 				alert("Hubo un error "+JSON.stringify(response));
 				$scope.errorMessage = response.statusText;
