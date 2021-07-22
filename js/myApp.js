@@ -60,7 +60,7 @@ app.config(function($routeProvider) {
 		        controller: "myCtrl"
 		    }).when("/nowplaying", {
 		        templateUrl : "partials/nowplaying.html",
-		        controller: "myCtrl2"
+		        controller: "myCtrl"
 		    }).when("/contact", {
 		        templateUrl : "partials/contact.html",
 		    }).when("/FAQ", {
